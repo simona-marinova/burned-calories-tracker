@@ -27,7 +27,7 @@ public class Activity {
     private int duration;
 
     @Column(nullable = false)
-    private double caloriesBurned;
+    private double burnedCalories;
 
     @Column(nullable = false)
     private UUID userId;

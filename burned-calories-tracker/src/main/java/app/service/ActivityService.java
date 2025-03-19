@@ -48,7 +48,7 @@ public class ActivityService {
         Activity activity = Activity.builder()
                 .activityType(createActivityRequest.getActivityType())
                 .duration(createActivityRequest.getDuration())
-                .caloriesBurned(calculateCaloriesBurned(createActivityRequest))
+                .burnedCalories(calculateCaloriesBurned(createActivityRequest))
                 .userId(createActivityRequest.getUserId())
                 .createdOn(LocalDateTime.now())
                 .build();

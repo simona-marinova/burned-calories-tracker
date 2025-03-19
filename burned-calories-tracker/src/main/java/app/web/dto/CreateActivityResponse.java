@@ -18,7 +18,7 @@ public class CreateActivityResponse {
 
     private int duration;
 
-    private double caloriesBurned;
+    private double burnedCalories;
 
     private String createdOn;
 

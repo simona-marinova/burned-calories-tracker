@@ -22,7 +22,7 @@ public class DtoMapper {
                 .userId(activity.getUserId())
                 .activityType(activity.getActivityType())
                 .duration(activity.getDuration())
-                .caloriesBurned(activity.getCaloriesBurned())
+                .burnedCalories(activity.getBurnedCalories())
                 .createdOn(formattedDate)
                 .build();
     }
