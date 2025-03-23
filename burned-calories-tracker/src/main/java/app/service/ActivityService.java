@@ -1,8 +1,9 @@
 package app.service;
 
-import app.model.ActivityType;
 import app.repository.ActivityRepository;
 import app.web.dto.CreateActivityRequest;
+import app.web.mapper.DtoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import app.model.Activity;
 
@@ -16,6 +17,7 @@ public class ActivityService {
 
     private final ActivityRepository activityRepository;
 
+    @Autowired
     public ActivityService(ActivityRepository activityRepository) {
         this.activityRepository = activityRepository;
     }
@@ -25,16 +27,16 @@ public class ActivityService {
         double caloriesPerMinute = 0;
 
         switch (createActivityRequest.getActivityType()) {
-            case ActivityType.WALKING:
+            case "WALKING":
                 caloriesPerMinute = 3.5;
                 break;
-            case ActivityType.CARDIO:
+            case "CARDIO":
                 caloriesPerMinute = 7;
                 break;
-            case ActivityType.WEIGHT_TRAINING:
+            case "WEIGHT_TRAINING":
                 caloriesPerMinute = 5;
                 break;
-            case ActivityType.RUNNING:
+            case "RUNNING":
                 caloriesPerMinute = 10;
                 break;
             default:
@@ -46,7 +48,7 @@ public class ActivityService {
 
     public Activity createActivity(CreateActivityRequest createActivityRequest) {
         Activity activity = Activity.builder()
-                .activityType(createActivityRequest.getActivityType())
+                .activityType(DtoMapper.fromString(createActivityRequest.getActivityType()))
                 .duration(createActivityRequest.getDuration())
                 .burnedCalories(calculateCaloriesBurned(createActivityRequest))
                 .userId(createActivityRequest.getUserId())

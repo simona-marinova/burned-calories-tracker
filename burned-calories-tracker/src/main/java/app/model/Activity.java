@@ -35,5 +35,4 @@ public class Activity {
     @Column(nullable = false)
     private LocalDateTime createdOn;
 
-
 }
